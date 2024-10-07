@@ -1,11 +1,12 @@
 
 =head1 NAME
- NMDrules
+
+NMDrules
 
 =head1 SYNOPSIS
  
-  mv NMDrules.pm  ~/.vep/Plugins
- ./vep -i variations.vcf --plugin NMDrules
+mv NMDrules.pm  ~/.vep/Plugins
+./vep -i variations.vcf --plugin NMDrules
 
 =head1 DESCRIPTION 
 
@@ -36,6 +37,10 @@ REFERENCES:
 1. The impact of nonsense-mediated mRNA decay on genetic disease, gene editing and cancer immunotherapy (Lindeboomet al. 2019, Nature Genetics)
 2. Systematic analysis of nonsense variants uncovers peptide release rate as a novel modifier of nonsense-mediated mRNA decay efficiency (Kolokada et al. 2024, bioRxiv)
 3. Advanced variant classification framework reduces the false positive rate of predicted loss-of-function variants in population sequencing data (Singer-Berk et al. 2023, Am J Hum Genet)
+
+=head1 AUTHOR
+
+Marc Pybus - L<https://github.com/marcpybus/>
 
 =cut 
 

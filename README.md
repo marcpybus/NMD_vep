@@ -5,12 +5,16 @@
 This is a plugin for Ensembl Variant Effect Predictor (VEP) software that predicts whether a stop gained variant triggers nonsense-mediated 
 mRNA decay (putative_NMD_triggering) or not (canonical_NMD_escaping, noncanonical_NMD_escaping) based on the following rules (1):
 
-* The variant is located in an intronless transcript, i.e. there is only one exon exist in the transcript 
-    > canonical_NMD_escaping:intronless 
-* The variant is located in the last exon of the transcript (canonical_NMD_escaping:last_exon).
-* The variant is located within teh last 50 bases of the penultimate exon (canonical_NMD_escaping:50bp_penult_exon).
-* The variant is located within the first 150 coding bases in the transcript (noncanonical_NMD_escaping:first_150bp). 
-* The variant is located in an exon larger than 407 bp (noncanonical_NMD_escaping:lt_407bp_exon). 
+* The variant is located in an intronless transcript, i.e. there is only one exon exist in the transcript:
+> canonical_NMD_escaping:intronless 
+* The variant is located in the last exon of the transcript:
+> canonical_NMD_escaping:last_exon
+* The variant is located within teh last 50 bases of the penultimate exon:
+> canonical_NMD_escaping:50bp_penult_exon
+* The variant is located within the first 150 coding bases in the transcript:
+> noncanonical_NMD_escaping:first_150bp
+* The variant is located in an exon larger than 407 bp:
+> noncanonical_NMD_escaping:lt_407bp_exon
 
 The plugin also shows the 2 codons/amino acids before the novel stop codon, plus the next nucleotide, for a detailed analysis, as they may influence the NMD efficiency (2).
 > e.g. GCC(Ala)CTG(Leu)TGA(Stop)C 

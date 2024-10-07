@@ -35,5 +35,7 @@ mv NMDrules.pm  ~/.vep/Plugins
 ./vep -i variations.vcf --plugin NMDrules
 ```
 
+### Credit
+
 @marcpybus - https://github.com/marcpybus/
 

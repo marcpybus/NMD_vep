@@ -19,14 +19,14 @@ Finally, it calculates the distance in amino acids to the next metionine (Met, s
 The plugin analyses variants that contain a stop codon Ter in their HGVSp notation (stop_gained, stop_loss, frameshift). Exceptions are synonymous variants at the stop codon (e.g. p.Ter811=) or when a stop codon is not inferrer downstream of a frameshift variant (e.g. p.Ter257GlufsTer?). Similarly, splicing variants are not considered, as VEP does not infer the consequence on the protein.
 
 Annotation format:
-> NMD_prediction:rule_used:-2codon(-2aa)-1codon(-1aa)stop_codon(Stop)fourth_letter:distance_in_aa_to_next_Met
+> rule_used:-2codon(-2aa)-1codon(-1aa)stop_codon(Stop)fourth_letter:distance_in_aa_to_next_Met
 
-This plugin has been run on the gnomad.exomes.r2.1.1.sites.vcf file without throwing any errors (https://storage.googleapis.com/gcp-public-data--gnomad/release/2.1.1/vcf/exomes/gnomad.exomes.r2.1.1.sites.vcf.bgz). Be aware that more complex variants may cause new bugs.
+This plugin has been run on all the [gnomAD 2.1.1 exomes](https://storage.googleapis.com/gcp-public-data--gnomad/release/2.1.1/vcf/exomes/gnomad.exomes.r2.1.1.sites.vcf.bgz) variants without throwing any errors. Be aware that more complex variants may cause new bugs.
 
-REFERENCES :
-(1) The impact of nonsense-mediated mRNA decay on genetic disease, gene editing and cancer immunotherapy (Lindeboomet al. 2019, Nature Genetics)
-(2) Systematic analysis of nonsense variants uncovers peptide release rate as a novel modifier of nonsense-mediated mRNA decay efficiency (Kolokada et al. 2024, bioRxiv)
-(3) Advanced variant classification framework reduces the false positive rate of predicted loss-of-function variants in population sequencing data (Singer-Berk et al. 2023, Am J Hum Genet)
+REFERENCES:
+1. The impact of nonsense-mediated mRNA decay on genetic disease, gene editing and cancer immunotherapy (Lindeboomet al. 2019, Nature Genetics)
+2. Systematic analysis of nonsense variants uncovers peptide release rate as a novel modifier of nonsense-mediated mRNA decay efficiency (Kolokada et al. 2024, bioRxiv)
+3. Advanced variant classification framework reduces the false positive rate of predicted loss-of-function variants in population sequencing data (Singer-Berk et al. 2023, Am J Hum Genet)
 
 ### Usage
 

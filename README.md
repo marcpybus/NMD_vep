@@ -1,4 +1,4 @@
-# NMD_rules
+## NMDrules
 
 This is a plugin for Ensembl Variant Effect Predictor (VEP) software that predicts whether a stop gained variant triggers nonsense-mediated 
 mRNA decay (putative_NMD_triggering) or not (canonical_NMD_escaping, noncanonical_NMD_escaping) based on the following rules (1):

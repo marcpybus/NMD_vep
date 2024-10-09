@@ -1,6 +1,13 @@
-## NMDrules
+### NMDrules
 
-### Description
+#### Motivation
+
+ - NMD prediction is becoming more and more relevant to understand the actual molecular mechanism driving a given gene-disease association. 
+ - Protein truncating variants (PTVs) that escape NMD can excert their pathogenic effects through a gain-of-function or dominant-negative mechanisms. Unfortunally, they are usually mistaken for loss-of-function variants that can lead to incorrect genetic diagnosis.
+ - After noticing the shortcomings in predicting NMD escaping of open-source variant annotators (i.e. VEP NMD plugin, SnpEff, LOFTEE, ALoFT) or the difficult integration into annontation pipelines of specilized software (i.e aenmd, NMDEscPredictor, NMDetective) I decided to implement a VEP plugin myself that performs a NMD prediction of stop codon generating variants (i.e. stop_gained, stop_loss, some frameshift variants). 
+ - In addition to applying the current canonical and noncanonical rules for NMD prediction, the plugin extracts information of the genomic context arround the generated stop codon, and leverages a hypothetical translation reinitiation.
+
+#### Description
 
 This is a plugin for Ensembl Variant Effect Predictor (VEP) software that predicts whether a stop codon generating variant (i.e. stop_gained, stop_loss, some frameshift variants) triggers nonsense-mediated mRNA decay (`putative_NMD_triggering`) or not (`canonical_NMD_escaping`, `noncanonical_NMD_escaping`) based on the following rules (1):
 
@@ -26,9 +33,8 @@ Splicing variants and deletions that include intronic regions are not considered
 
 This plugin has been tested on all the [gnomAD 2.1.1 exomes](https://storage.googleapis.com/gcp-public-data--gnomad/release/2.1.1/vcf/exomes/gnomad.exomes.r2.1.1.sites.vcf.bgz) variants without throwing any errors. Be aware that more complex variants may cause unobserved bugs.
 
+#### References
 
-
-REFERENCES:
 1. The impact of nonsense-mediated mRNA decay on genetic disease, gene editing and cancer immunotherapy (Lindeboomet al. 2019, Nature Genetics)
 2. Systematic analysis of nonsense variants uncovers peptide release rate as a novel modifier of nonsense-mediated mRNA decay efficiency (Kolokada et al. 2024, bioRxiv)
 3. Advanced variant classification framework reduces the false positive rate of predicted loss-of-function variants in population sequencing data (Singer-Berk et al. 2023, Am J Hum Genet)
@@ -40,7 +46,7 @@ mv NMDrules.pm  ~/.vep/Plugins
 ./vep -i variations.vcf --plugin NMDrules
 ```
 
-### Usage
+### Credit
 
 @marcpybus - https://github.com/marcpybus/
 

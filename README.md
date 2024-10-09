@@ -2,8 +2,7 @@
 
 ### Description
 
-This is a plugin for Ensembl Variant Effect Predictor (VEP) software that predicts whether a stop codon generating variant (stop_gained, stop_loss, frameshift) triggers nonsense-mediated 
-mRNA decay (putative_NMD_triggering) or not (canonical_NMD_escaping, noncanonical_NMD_escaping) based on the following rules (1):
+This is a plugin for Ensembl Variant Effect Predictor (VEP) software that predicts whether a stop codon generating variant (i.e. stop_gained, stop_loss, some frameshift variants) triggers nonsense-mediated mRNA decay (putative_NMD_triggering) or not (canonical_NMD_escaping, noncanonical_NMD_escaping) based on the following rules (1):
 
 * The variant is located in an intronless transcript, i.e. there is only one exon exist in the transcript: `canonical_NMD_escaping:intronless`
 * The variant is located in the last exon of the transcript:

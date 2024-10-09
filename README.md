@@ -32,7 +32,7 @@ Annotation:     `noncanonical_NMD_escaping:first_150bp:GCC(Ala)CTG(Leu)TGA(Stop)
 
 #### Implementation
 
-The plugin starts by filtering in all variants with a stop codon (Ter) in their HGVSp notation. Exceptions are synonymous variants at the stop codon (e.g. p.Ter811=) or when no stop codon is inferred downstream of a frameshift variant (e.g. p.Ter257GlufsTer?). It then internally applies the mutation to the original cDNA to determine the location of the new stop codon, always taking into account all insertions and deletions contained within the cDNA sequence.  
+The plugin starts by filtering in all variants with a stop codon (Ter) in their HGVSp notation. Exceptions are synonymous variants at the stop codon (e.g. p.Ter811=) or when no stop codon is inferred downstream of a frameshift variant (e.g. p.Ter257GlufsTer?). It then internally applies the mutation to the original cDNA to determine the location of the new stop codon. All insertions and deletions must be contained within the cDNA sequence.  
 
 Splicing variants and deletions involving intron/exon boundaries are not considered, as VEP cannot properly infer the mutated protein.
 

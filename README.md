@@ -26,9 +26,8 @@ Finally, it calculates the distance in amino acids to the next metionine (Met, s
 Annotation format: 
 `nmd_prediction:rule_used:-2codon(-2aa)-1codon(-1aa)stop_codon(Stop)fourth_letter:distance_in_aa_to_next_Met`
 
-Example:    10-102509528-C-CG 	PAX2(NM_000278.5):c.76dup:p.Val26GlyfsTer28
-
-Annotation: `noncanonical_NMD_escaping:first_150bp:GCC(Ala)CTG(Leu)TGA(Stop)C:573`
+Example:    10-102509528-C-CG 	PAX2(NM_000278.5):c.76dup:p.Val26GlyfsTer28  
+Annotation: `noncanonical_NMD_escaping:first_150bp:GCC(Ala)CTG(Leu)TGA(Stop)C:573`  
 
 The plugin starts by filtering in all variants with a stop codon (Ter) in their HGVSp notation. Exceptions are synonymous variants at the stop codon (e.g. p.Ter811=) or when no stop codon is inferred downstream of a frameshift variant (e.g. p.Ter257GlufsTer?). It then internally applies the mutation to the original cDNA to determine the location of the new stop codon, always taking into account all insertions and deletions contained within the cDNA sequence.  
 

@@ -1,7 +1,7 @@
 
 =head1 NAME
 
-NMDrules
+NMDrules: A VEP plugin to predict NMD in stop codon generating variants
 
 =head1 SYNOPSIS
  

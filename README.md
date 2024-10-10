@@ -1,4 +1,4 @@
-### NMDrules
+### NMDrules: A VEP plugin to predict NMD in stop codon generating variants
 
 #### Motivation
 

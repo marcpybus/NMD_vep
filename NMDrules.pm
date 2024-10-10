@@ -60,15 +60,15 @@ our $DEBUG = 0;
 
 sub get_header_info {
   return {
-    NMDrules => "Considering 5 rules for NMD prediction of stop gain variants (Ter in HGVSp notation) & their surronding genomic context, Format: NMD_pred:rule_used:-2codon(-2aa)-1codon(-1aa)-stop_codon(Stop)fourth_letter:dist_next_Met"};
+    NMDrules => "Considering 5 rules for NMD prediction of stop generating variants & their surronding genomic context"};
 }
 
 sub get_header_info {
   return {
-    NMD_prediction => "NMD prediction (putative_NMD_triggering, canonical_NMD_escaping, noncanonical_NMD_escaping)",
-    NMD_rule => "NMD escaping rule (intronless, last_exon, 50bp_penult_exon, first_150bp, lt_407bp_exon)",
-    Stop_gained_context => "Genomic context arround stop gained codon: -2codon(-2aa)-1codon(-1aa)stop_codon(Stop)fourth_letter",
-    Dist_to_Met => "Distance in aminoacids to the next Met",
+    NMD_prediction => "'NMD prediction (putative_NMD_triggering, canonical_NMD_escaping, noncanonical_NMD_escaping)'",
+    NMD_rule => "'NMD escaping rule (intronless, last_exon, 50bp_penult_exon, first_150bp, lt_407bp_exon)'",
+    Stop_context => "'Genomic context arround stop gained codon: -2codon(-2aa)-1codon(-1aa)stop_codon(Stop)fourth_letter'",
+    Dist_to_Met => "'Distance in aminoacids to the next Met'",
   };
 }
 
@@ -302,6 +302,10 @@ sub run {
 
   $output_hash->{'NMD_prediction'} = $nmd_pred;
   $output_hash->{'NMD_rule'} = $nmd_rule;
+
+  while ( ($k,$v) = each %{$output_hash} ) {
+    print "$k => $v\n";
+  }
 
   return $output_hash;
 

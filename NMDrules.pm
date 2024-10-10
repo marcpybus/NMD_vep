@@ -63,6 +63,15 @@ sub get_header_info {
     NMDrules => "Considering 5 rules for NMD prediction of stop gain variants (Ter in HGVSp notation) & their surronding genomic context, Format: NMD_pred:rule_used:-2codon(-2aa)-1codon(-1aa)-stop_codon(Stop)fourth_letter:dist_next_Met"};
 }
 
+sub get_header_info {
+  return {
+    NMD_prediction => "NMD prediction (putative_NMD_triggering, canonical_NMD_escaping, noncanonical_NMD_escaping)",
+    NMD_rule => "NMD escaping rule (intronless, last_exon, 50bp_penult_exon, first_150bp, lt_407bp_exon)",
+    Stop_gained_context => "Genomic context arround stop gained codon: -2codon(-2aa)-1codon(-1aa)stop_codon(Stop)fourth_letter",
+    Dist_to_Met => "Distance in aminoacids to the next Met",
+  };
+}
+
 sub run {
   my $self = shift; 
   my $tva = shift;
@@ -99,6 +108,8 @@ sub run {
   my $check_407bp = 0;
   my $check_150bp = 0;
   my $check_no_introns = 0;
+
+  my $output_hash = {};
 
   # variant feature location
   my $start_coding_cdna_location = $tr->cdna_coding_start;
@@ -207,8 +218,8 @@ sub run {
   }
   print "fourth_letter: $fourth_letter\n" if $DEBUG == 1;
 
-  # define stop codon context
-  my $stop_codon_context = ":$minus_2_codon($minus_2_aa)$minus_1_codon($minus_1_aa)$stop_codon($stop_codon_aa)$fourth_letter:$next_met_aa_distance";
+  $output_hash->{'Stop_gained_context'} = "$minus_2_codon($minus_2_aa)$minus_1_codon($minus_1_aa)$stop_codon($stop_codon_aa)$fourth_letter";
+  $output_hash->{'Dist_to_Met'} = $next_met_aa_distance;
 
   # check if variant is in last exon
   my $last_exon = $exons[-1]; 
@@ -265,21 +276,34 @@ sub run {
   }
 
   # if statement to check if any of the rules is true
+  my $nmd_pred = "";
+  my $nmd_rule = "";
 
   if ( 0 ) {
   } elsif( $check_no_introns ) {
-    return {NMDrules => "canonical_NMD_escaping:intronless:$minus_2_codon($minus_2_aa)$minus_1_codon($minus_1_aa)$stop_codon($stop_codon_aa)$fourth_letter:$next_met_aa_distance" };
+    $nmd_pred = "canonical_NMD_escaping";
+    $nmd_rule = "intronless";
   } elsif( $check_last ) {
-    return {NMDrules => "canonical_NMD_escaping:last_exon:$minus_2_codon($minus_2_aa)$minus_1_codon($minus_1_aa)$stop_codon($stop_codon_aa)$fourth_letter:$next_met_aa_distance" };  
+    $nmd_pred = "canonical_NMD_escaping";
+    $nmd_rule = "last_exon";
   } elsif( $check_50bp_second_last ) {
-    return {NMDrules => "canonical_NMD_escaping:50bp_penult_exon:$minus_2_codon($minus_2_aa)$minus_1_codon($minus_1_aa)$stop_codon($stop_codon_aa)$fourth_letter:$next_met_aa_distance" };  
+    $nmd_pred = "canonical_NMD_escaping";
+    $nmd_rule = "50bp_penult_exon";
   } elsif( $check_150bp) {
-    return {NMDrules => "noncanonical_NMD_escaping:first_150bp:$minus_2_codon($minus_2_aa)$minus_1_codon($minus_1_aa)$stop_codon($stop_codon_aa)$fourth_letter:$next_met_aa_distance" };  
+    $nmd_pred = "noncanonical_NMD_escaping";
+    $nmd_rule = "first_150bp";
   } elsif( $check_407bp ) {
-    return {NMDrules => "noncanonical_NMD_escaping:lt_407bp_exon:$minus_2_codon($minus_2_aa)$minus_1_codon($minus_1_aa)$stop_codon($stop_codon_aa)$fourth_letter:$next_met_aa_distance" };
+    $nmd_pred = "noncanonical_NMD_escaping";
+    $nmd_rule = "lt_407bp_exon";
   } else {
-    return {NMDrules => "putative_NMD_triggering::$minus_2_codon($minus_2_aa)$minus_1_codon($minus_1_aa)$stop_codon($stop_codon_aa)$fourth_letter:$next_met_aa_distance" };  
+    $nmd_pred = "putative_NMD_triggering";
+    $nmd_rule = "";
   }
+
+  $output_hash->{'NMD_prediction'} = $nmd_pred;
+  $output_hash->{'NMD_rule'} = $nmd_rule;
+
+  return $output_hash;
 
 }
 

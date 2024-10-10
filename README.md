@@ -21,7 +21,8 @@ This is a plugin for Ensembl Variant Effect Predictor (VEP) software that predic
 
 Then, it calculates the distance in amino acids to the next metionine (Met, start codon) after the stop codon to leverage an hypothetical translation reinitiation (3) (`Next_Met`). 
 
-The plugin also shows the 2 codons/amino acids before the novel stop codon, plus the next nucleotide, for a detailed analysis, as they may influence the NMD efficiency (2) (`Stop_context => -2codon(-2aa)-1codon(-1aa)stop_codon(Stop)fourth_letter`)
+The plugin also shows the 2 codons/amino acids before the novel stop codon, plus the next nucleotide, for a detailed analysis, as they may influence the NMD efficiency (2) (`Stop_context`):  
+Format: `-2codon(-2aa)-1codon(-1aa)stop_codon(Stop)fourth_letter`  
 
 #### Example: 
 

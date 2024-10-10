@@ -60,10 +60,10 @@ our $DEBUG = 0;
 
 sub get_header_info {
   return {
-    NMD_prediction => 'NMD prediction (putative_NMD_triggering, canonical_NMD_escaping, noncanonical_NMD_escaping)',
-    NMD_rule => 'NMD escaping rule (intronless, last_exon, 50bp_penult_exon, first_150bp, lt_407bp_exon)',
-    Next_Met => 'Distance in aminoacids to the next Met',
-    Stop_context => 'Genomic context arround stop gained codon: -2codon(-2aa)-1codon(-1aa)stop_codon(Stop)fourth_letter'
+    NMD_prediction => '"NMD prediction (putative_NMD_triggering, canonical_NMD_escaping, noncanonical_NMD_escaping)"',
+    NMD_rule => '"NMD escaping rule (intronless, last_exon, 50bp_penult_exon, first_150bp, lt_407bp_exon)"',
+    Next_Met => '"Distance in aminoacids to the next Met"',
+    Stop_context => '"Genomic context arround stop gained codon: -2codon(-2aa)-1codon(-1aa)stop_codon(Stop)fourth_letter"'
   }
 }
 
@@ -213,8 +213,8 @@ sub run {
   }
   print "fourth_letter: $fourth_letter\n" if $DEBUG == 1;
 
-  $output_hash->{'Stop_gained_context'} = "$minus_2_codon($minus_2_aa)$minus_1_codon($minus_1_aa)$stop_codon($stop_codon_aa)$fourth_letter";
-  $output_hash->{'Dist_to_Met'} = $next_met_aa_distance;
+  $output_hash->{'Stop_context'} = "$minus_2_codon($minus_2_aa)$minus_1_codon($minus_1_aa)$stop_codon($stop_codon_aa)$fourth_letter";
+  $output_hash->{'Next_Met'} = $next_met_aa_distance;
 
   # check if variant is in last exon
   my $last_exon = $exons[-1]; 

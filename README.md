@@ -25,12 +25,10 @@ The plugin also shows the 2 codons/amino acids before the novel stop codon, plus
 
 #### Annotation format: 
 
-``
-NMD_prediction => "NMD prediction (putative_NMD_triggering, canonical_NMD_escaping, noncanonical_NMD_escaping)"  
-NMD_rule => "NMD escaping rule (intronless, last_exon, 50bp_penult_exon, first_150bp, lt_407bp_exon)"  
-Next_Met => "Distance in aminoacids to the next Met"  
-Stop_context => "Genomic context arround stop gained codon: -2codon(-2aa)-1codon(-1aa)stop_codon(Stop)fourth_letter"  
-``
+`NMD_prediction => "NMD prediction (putative_NMD_triggering, canonical_NMD_escaping, noncanonical_NMD_escaping)"`  
+`NMD_rule => "NMD escaping rule (intronless, last_exon, 50bp_penult_exon, first_150bp, lt_407bp_exon)"`  
+`Next_Met => "Distance in aminoacids to the next Met"`  
+`Stop_context => "Genomic context arround stop gained codon: -2codon(-2aa)-1codon(-1aa)stop_codon(Stop)fourth_letter"`  
 
 Example:        10-102509528-C-CG 	PAX2(NM_000278.5):c.76dup:p.Val26GlyfsTer28  
 Annotation:     `noncanonical_NMD_escaping|first_150bp|573|GCC(Ala)CTG(Leu)TGA(Stop)C`  

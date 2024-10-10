@@ -60,11 +60,6 @@ our $DEBUG = 0;
 
 sub get_header_info {
   return {
-    NMDrules => "Considering 5 rules for NMD prediction of stop generating variants & their surronding genomic context"};
-}
-
-sub get_header_info {
-  return {
     NMD_prediction => 'NMD prediction (putative_NMD_triggering, canonical_NMD_escaping, noncanonical_NMD_escaping)',
     NMD_rule => 'NMD escaping rule (intronless, last_exon, 50bp_penult_exon, first_150bp, lt_407bp_exon)',
     Next_Met => 'Distance in aminoacids to the next Met',

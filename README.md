@@ -11,13 +11,13 @@
 
 #### Description
 
-This is a plugin for Ensembl Variant Effect Predictor (VEP) software that predicts whether a stop codon generating variant (i.e. stop_gained, stop_loss, some frameshift variants) triggers nonsense-mediated mRNA decay (`putative_NMD_triggering`) or not (`canonical_NMD_escaping`, `noncanonical_NMD_escaping`) based on the following rules (1):
+This is a plugin for Ensembl Variant Effect Predictor (VEP) software that predicts whether a stop codon generating variant (i.e. stop_gained, stop_loss, some frameshift variants) triggers nonsense-mediated mRNA decay (`putative_NMD_triggering`) or not (`canonical_NMD_escaping`, `noncanonical_NMD_escaping`) based on the following rules (1) (`NMD_prediction => NMD_rule`):
 
-* The variant is located in an intronless transcript: `canonical_NMD_escaping => intronless`
-* The variant is located in the last exon of the transcript: `canonical_NMD_escaping => last_exon`
-* The variant is located within the last 50 bp of the penultimate exon: `canonical_NMD_escaping => 50bp_penult_exon`
-* The variant is located within the first 150 coding bases in the transcript: `noncanonical_NMD_escaping => first_150bp`
-* The variant is located in an exon larger than 407 bp: `noncanonical_NMD_escaping => lt_407bp_exon`
+* The variant is located in an intronless transcript: `canonical_NMD_escaping => intronless`  
+* The variant is located in the last exon: `canonical_NMD_escaping => last_exon`  
+* The variant is located in the last 50 bp of the penultimate exon: `canonical_NMD_escaping => 50bp_penult_exon`  
+* The variant is located in the first 150 coding bases: `noncanonical_NMD_escaping => first_150bp`  
+* The variant is located in an exon larger than 407 bp: `noncanonical_NMD_escaping => lt_407bp_exon`  
 
 Then, it calculates the distance in amino acids to the next metionine (Met, start codon) after the stop codon to leverage an hypothetical translation reinitiation (3) (`Next_Met`). 
 
@@ -26,10 +26,10 @@ The plugin also shows the 2 codons/amino acids before the novel stop codon, plus
 #### Annotation format: 
 
 ``
-NMD_prediction => "NMD prediction (putative_NMD_triggering, canonical_NMD_escaping, noncanonical_NMD_escaping)"
-NMD_rule => "NMD escaping rule (intronless, last_exon, 50bp_penult_exon, first_150bp, lt_407bp_exon)"
-Next_Met => "Distance in aminoacids to the next Met"
-Stop_context => "Genomic context arround stop gained codon: -2codon(-2aa)-1codon(-1aa)stop_codon(Stop)fourth_letter"
+NMD_prediction => "NMD prediction (putative_NMD_triggering, canonical_NMD_escaping, noncanonical_NMD_escaping)"  
+NMD_rule => "NMD escaping rule (intronless, last_exon, 50bp_penult_exon, first_150bp, lt_407bp_exon)"  
+Next_Met => "Distance in aminoacids to the next Met"  
+Stop_context => "Genomic context arround stop gained codon: -2codon(-2aa)-1codon(-1aa)stop_codon(Stop)fourth_letter"  
 ``
 
 Example:        10-102509528-C-CG 	PAX2(NM_000278.5):c.76dup:p.Val26GlyfsTer28  

@@ -65,10 +65,10 @@ sub get_header_info {
 
 sub get_header_info {
   return {
-    NMD_prediction => "'NMD prediction (putative_NMD_triggering, canonical_NMD_escaping, noncanonical_NMD_escaping)'",
-    NMD_rule => "'NMD escaping rule (intronless, last_exon, 50bp_penult_exon, first_150bp, lt_407bp_exon)'",
-    Next_Met => "'Distance in aminoacids to the next Met'",
-    Stop_context => "'Genomic context arround stop gained codon: -2codon(-2aa)-1codon(-1aa)stop_codon(Stop)fourth_letter'",
+    NMD_prediction => 'NMD prediction (putative_NMD_triggering, canonical_NMD_escaping, noncanonical_NMD_escaping)',
+    NMD_rule => 'NMD escaping rule (intronless, last_exon, 50bp_penult_exon, first_150bp, lt_407bp_exon)',
+    Next_Met => 'Distance in aminoacids to the next Met',
+    Stop_context => 'Genomic context arround stop gained codon: -2codon(-2aa)-1codon(-1aa)stop_codon(Stop)fourth_letter'
   }
 }
 

@@ -26,7 +26,7 @@ Format: `-2codon(-2aa)-1codon(-1aa)stop_codon(Stop)fourth_letter`
 
 #### Example: 
 
-Variant: 10-102509528-C-CG  
+Variant: 10-102509528-C-CG (GRCh37)
 HGVS: PAX2(NM_000278.5):c.76dup:p.Val26GlyfsTer28  
 Annotation: `noncanonical_NMD_escaping|first_150bp|169|GCC(Ala)CTG(Leu)TGA(Stop)C`  
 

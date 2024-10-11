@@ -161,12 +161,14 @@ sub run {
   my $stop_gained_position = 3 * length($mutated_pep);
 
   # get next ATG after stop_codon position
-  my $mutated_cds_seq_after_stop = substr($mutated_cds_3_prime_utr_seq, $stop_gained_position);
   my $next_atg_distance = "NoATG";
-  if( $mutated_cds_seq_after_stop =~ s/ATG.*// ){
-    $mutated_cds_seq_after_stop = $mutated_cds_seq_after_stop . "ATG";
-    $next_atg_distance = length($mutated_cds_seq_after_stop);
-  };
+  if( length($mutated_cds_3_prime_utr_seq) >= $stop_gained_position ){
+    my $mutated_cds_seq_after_stop = substr($mutated_cds_3_prime_utr_seq, $stop_gained_position);
+    if( $mutated_cds_seq_after_stop =~ s/ATG.*// ){
+      $mutated_cds_seq_after_stop = $mutated_cds_seq_after_stop . "ATG";
+      $next_atg_distance = length($mutated_cds_seq_after_stop);
+    }
+  }
 
   print "stop cds pos: $stop_gained_position\n" if $DEBUG == 1;
   print "mutated cds+3'utr: $mutated_cds_seq\n" if $DEBUG == 1;

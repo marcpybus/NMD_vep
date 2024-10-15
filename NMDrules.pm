@@ -29,7 +29,7 @@ This is a plugin for Ensembl Variant Effect Predictor (VEP) software that predic
 * The variant is located in the first 150 coding bases: `noncanonical_NMD_escaping => first_150bp`  
 * The variant is located in an exon larger than 407 bp: `noncanonical_NMD_escaping => lt_407bp_exon`  
 
-Then, it calculates the distance in bps to the next ATG (start codon) after the stop codon to leverage an hypothetical translation reinitiation (3) (`Next_ATG`).  
+Then, it calculates the distance in bps to the next ATG (start codon) after the stop codon to leverage an hypothetical translation reinitiation (3) (`Next_ATG`). If no ATG is found downstream of the stop codon, the output value is -1. 
 
 The plugin also shows the 2 codons/amino acids before the novel stop codon, plus the next nucleotide, for a detailed analysis, as they may influence the NMD efficiency (2) (`Stop_context`).  
 Format: `-2codon(-2aa)-1codon(-1aa)stop_codon(Stop)fourth_letter`  
@@ -73,7 +73,7 @@ sub get_header_info {
   return {
     NMD_prediction => '"NMD prediction (putative_NMD_triggering, canonical_NMD_escaping, noncanonical_NMD_escaping)"',
     NMD_rule => '"NMD escaping rule (intronless, last_exon, 50bp_penult_exon, first_150bp, lt_407bp_exon)"',
-    Next_ATG => '"Distance to the next ATG (bps)"',
+    Next_ATG => '"Distance to the next ATG in base pairs (no ATG found is -1)"',
     Stop_context => '"Genomic context arround stop gained codon: -2codon(-2aa)-1codon(-1aa)stop_codon(Stop)fourth_letter"'
   }
 }
@@ -161,7 +161,7 @@ sub run {
   my $stop_gained_position = 3 * length($mutated_pep);
 
   # get next ATG after stop_codon position
-  my $next_atg_distance = "NoATG";
+  my $next_atg_distance = -1;
   my $mutated_cds_seq_after_stop = "NoSeq";
   if( length($mutated_cds_3_prime_utr_seq) >= $stop_gained_position ){
     $mutated_cds_seq_after_stop = substr($mutated_cds_3_prime_utr_seq, $stop_gained_position);
